@@ -348,7 +348,7 @@ const AddProduct = () => {
                     formData
                 );
             }
-
+            console.log(res)
             alert("Saved successfully");
             if (!editId) {
                 setForm(initialForm);
