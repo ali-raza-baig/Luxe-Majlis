@@ -17,12 +17,19 @@ const registerController = async (req, res) => {
         })
 
         await user.save()
-        createToken({ email: email, id: user._id, res: res })
+        const token = await createToken({ email: email, id: user._id })
         res.status(200).send({
             success: true,
-            message: 'Successfully registered'
+            message: 'Successfully registered',
+            user: {
+                _id: user._id,
+                email: user.email,
+                name: user.name
+            },
+            token: token
         })
     } catch (error) {
+        console.log(error)
         res.status(500).send({
             success: false,
             message: 'Internal server error'
@@ -48,20 +55,27 @@ const loginController = async (req, res) => {
             })
         };
 
-        const isMatch = await userModel.comparePassword(password);
+        const isMatch = await user.comparePassword(password);
         if (!isMatch) {
             return res.status(400).send({
                 success: false,
                 message: 'Invalid email or password'
             })
         };
-        createToken({ email: email, id: user._id, res: res })
+        const token = await createToken({ email: email, id: user._id })
         return res.status(200).send({
             success: true,
-            message: 'Login Successfully'
+            message: 'Login Successfully',
+            user: {
+                _id: user._id,
+                email: user.email,
+                name: user.name
+            },
+            token: token
         })
 
     } catch (error) {
+        console.log(error)
         res.status(500).send({
             success: false,
             message: 'Internal server error'

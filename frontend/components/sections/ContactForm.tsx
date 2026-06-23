@@ -27,7 +27,6 @@ const ContactForm = () => {
 
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault()
-        console.log(form)
 
         // reset form
         setForm({

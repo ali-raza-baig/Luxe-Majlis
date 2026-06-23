@@ -12,17 +12,18 @@ import consultationRoutes from "./routes/consultation.route.js";
 import categoryRoutes from "./routes/category.route.js";
 const app = express();
 
-//Database Connection
-mongooseConnection()
 
 //Middleware
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 app.use(cors({
     origin: '*'
 }));
 app.use(morgan('combined'));
 app.use(cookieParser());
 
+//Database Connection
+mongooseConnection()
 
 //Api Endpoints
 app.use('/', express.static(path.join(process.cwd(), 'public')))

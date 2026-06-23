@@ -9,6 +9,7 @@ import { useProduct } from '../context/ProductContext'
 import { FaEdit } from 'react-icons/fa'
 import { MdDeleteOutline, MdPreview } from 'react-icons/md'
 import ModelBox from '../components/ModelBox'
+import axios from 'axios'
 
 
 const Products = () => {
@@ -26,14 +27,21 @@ const Products = () => {
 
     const filteredProducts = search ? products.filter((item: any) => item.title.en.toLowerCase().includes(search.toLowerCase())) : products
 
-    const handleDelete = (row: any) => {
-        const confirmDelete = window.confirm(
-            "Are you sure you want to delete?"
-        );
+    const handleDelete = async (row: any) => {
+        try {
+            const confirmDelete = window.confirm(
+                "Are you sure you want to delete?"
+            );
 
-        if (confirmDelete) {
-            let newProducts = products.filter((item: any) => item._id !== row._id)
-            setProducts(newProducts);
+            if (confirmDelete) {
+                const { data } = await axios.delete(`${import.meta.env.VITE_API_BACKEND_URL}/api/product/delete/${row._id}`)
+                if (data.success) {
+                    let newProducts = products.filter((item: any) => item._id !== row._id)
+                    setProducts(newProducts);
+                }
+            }
+        } catch (error) {
+            console.log(error)
         }
     };
     const handleEdit = (row: any) => {

@@ -13,7 +13,7 @@ const Faqs = ({ faqs }: { faqs?: FAQ[] }) => {
     const toggleIndex = (index: number) => {
         setActiveIndex(activeIndex === index ? null : index)
     }
-    console.log(faqs)
+
     return (
         <motion.div
             initial={{ y: 100, opacity: 0 }}

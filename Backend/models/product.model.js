@@ -21,7 +21,7 @@ const productSchema = mongoose.Schema({
     },
     futureImage: {
         type: String,
-        required: true
+        // required: true
     },
     imageGallery: [{
         type: String
@@ -44,9 +44,7 @@ const productSchema = mongoose.Schema({
         des: langField
     },
     qualities: {
-        title: langField,
         cards: [{
-            icon: String,
             title: langField,
             des: langField
         }]

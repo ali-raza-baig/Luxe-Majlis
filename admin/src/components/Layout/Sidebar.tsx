@@ -2,7 +2,6 @@ import {
     FaTachometerAlt,
     FaTags,
     FaBoxOpen,
-    FaImages,
     FaEnvelope,
     FaPlus,
 } from "react-icons/fa";
@@ -29,11 +28,11 @@ export const sidebarItems = [
         link: "/new-product",
         icon: FaPlus,
     },
-    {
-        name: "Media Library",
-        link: "/media-library",
-        icon: FaImages,
-    },
+    // {
+    //     name: "Media Library",
+    //     link: "/media-library",
+    //     icon: FaImages,
+    // },
     {
         name: "Messages",
         link: "/messages",

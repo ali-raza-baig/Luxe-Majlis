@@ -1,4 +1,4 @@
-import React from 'react'
+
 
 const Button = ({ text, handleClick }: { text: string, handleClick?: () => void }) => {
     return (

@@ -6,16 +6,21 @@ import Category from './pages/Category';
 import Messages from './pages/Messages';
 import MediaLibrary from './pages/MediaLibrary';
 import AddProduct from './pages/AddProduct';
+import Login from './pages/Login';
+import ProtectedRoutes from './components/ProtectedRoutes';
 
 const App = () => {
   return (
     <Routes>
-      <Route element={<Home />} path='/' />
-      <Route element={<Products />} path='/products' />
-      <Route element={<Category />} path='/category' />
-      <Route element={<Messages />} path='/messages' />
-      <Route element={<MediaLibrary />} path='/media-library' />
-      <Route element={<AddProduct />} path='/new-product' />
+      <Route element={<Login />} path='/login' />
+      <Route element={<ProtectedRoutes />}>
+        <Route element={<Home />} path='/' />
+        <Route element={<Products />} path='/products' />
+        <Route element={<Category />} path='/category' />
+        <Route element={<Messages />} path='/messages' />
+        <Route element={<MediaLibrary />} path='/media-library' />
+        <Route element={<AddProduct />} path='/new-product' />
+      </Route>
     </Routes>
   )
 }

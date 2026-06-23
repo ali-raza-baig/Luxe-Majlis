@@ -1,4 +1,4 @@
-import React from 'react'
+
 import { IoClose } from 'react-icons/io5';
 
 const ModelBox = ({ open, setOpen, title, children, className }: { children: React.ReactNode, open: boolean, setOpen: any, title?: string, className?: string }) => {

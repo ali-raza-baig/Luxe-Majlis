@@ -2,7 +2,8 @@ import jwt from 'jsonwebtoken'
 
 export const isVerified = async (req, res, next) => {
     try {
-        const token = req.cookies.token;
+        const token = req.cookies.token || req.headers.authorization;
+        console.log(token)
         if (!token) {
             return res.status(400).send({
                 success: false,
@@ -22,10 +23,10 @@ export const isVerified = async (req, res, next) => {
         next();
 
     } catch (error) {
+        console.log(`Error in isVerified middleware : ${error}`)
         res.status(500).send({
             success: false,
             message: 'Internal Server Error'
         })
-        console.log(`Error in isVerified middleware : ${error}`)
     }
 }
