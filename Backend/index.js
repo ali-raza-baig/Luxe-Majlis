@@ -25,6 +25,9 @@ app.use(cookieParser());
 //Database Connection
 mongooseConnection()
 
+app.get('/', (req, res) => {
+    res.send('Server Running')
+})
 //Api Endpoints
 app.use('/', express.static(path.join(process.cwd(), 'public')))
 app.use('/api/auth', authRoutes);
