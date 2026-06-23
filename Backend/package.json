@@ -2,12 +2,12 @@
   "name": "backend",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "nodemon server.js",
     "dev-con": "concurrently \"npm run dev\" \"cd ../admin && npm run dev\" \"cd ../frontend && npm run dev\"",
-    "start": "node index.js"
+    "start": "node server.js"
   },
   "keywords": [],
   "author": "Ali Raza",
